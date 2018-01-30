@@ -11,6 +11,7 @@ new Vue({
     show:false, //true,
     background:'',
     progress: 0,
+    stop: false,
   },
   methods: {
     startEffect: function() {
@@ -25,8 +26,9 @@ new Vue({
     startProgress: function() {
       var timer = this;
       var progress = setInterval(function() {
+        timer.stop == false ? timer.stop = false : clearInterval(progress);
         timer.progress < 100 ? timer.progress += 10: clearInterval(progress);
       },1000);
-    }
+    },
   },
 });

@@ -33,7 +33,8 @@
   </div>
   <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
   <div>
-    <button @click="startProgress">Start Progress</button>
+    <button @click="startProgress" :bind='stop = false'>Start Progress</button>
+    <button @click='stop = true'>Stop Progress</button>
     <span>Progress {{progress}}%</span>
     <div id='progressBar'>
       <div class='blip' :class='{active: progress >= 10}'></div>
