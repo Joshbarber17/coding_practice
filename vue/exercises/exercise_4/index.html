@@ -16,25 +16,39 @@
   </div>
   <!-- 3) Let the user enter a class (create some example classes) and attach it -->
   <div>
-    <span>Black or Gray?</span>
-    <input type="text" v-model='typeClass'>
+    <!-- <span>Black or Gray?</span> -->
+    <input type="text" v-model='typeClass' placeholder="Black or Gray?">
     <div :class='typeClass'></div>
   </div>
   <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
   <div>
-    <input type="text" v-model='size'>
-    <input type="text" @keyup.enter='trueFalse' v-model='isWhite'>
+    <input type="text" v-model='size' placeholder="big or little?">
+    <input type="text" @keyup.enter='trueFalse' v-model='isWhite' placeholder="true or false">
     <div :class='[size, isWhite, {fontColor: show}]'>Whats up!</div>
   </div>
   <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
   <div>
-    <input type="text">
-    <div></div>
+    <input type="text"  v-model='background' placeholder="Type A Color">
+    <div id='computed' :style='{backgroundColor: background}'></div>
   </div>
   <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
   <div>
-    <!-- <button v-on:click="startProgress">Start Progress</button> -->
-    <div></div>
+    <button @click="startProgress">Start Progress</button>
+    <span>Progress {{progress}}%</span>
+    <div id='progressBar'>
+      <div class='blip' :class='{active: progress >= 10}'></div>
+      <div class='blip' :class='{active: progress >= 20}'></div>
+      <div class='blip' :class='{active: progress >= 30}'></div>
+      <div class='blip' :class='{active: progress >= 40}'></div>
+      <div class='blip' :class='{active: progress >= 50}'></div>
+      <div class='blip' :class='{active: progress >= 60}'></div>
+      <div class='blip' :class='{active: progress >= 70}'></div>
+      <div class='blip' :class='{active: progress >= 80}'></div>
+      <div class='blip' :class='{active: progress >= 90}'></div>
+      <div class='blip' :class='{active: progress >= 100}'></div>
+    </div>
+    <span v-if='progress == 100'>Progress Complete!</span>
+    <button v-if='progress==100' @click='progress=0'>Reset Progress</button>
   </div>
 </div>
 <script src='app.js'></script>

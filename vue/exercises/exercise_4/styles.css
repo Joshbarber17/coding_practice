@@ -42,3 +42,29 @@
 .fontColor {
   color:white;
 }
+#computed {
+  height:100px;
+  width:100px;
+  background-color:black;
+}
+#progressBar {
+  height:50px;
+  width:500px;
+  background-color:white;
+  border-style: solid;
+  border-width:1px;
+  border-color: black;
+  display:flex;
+  flex-direction: row;
+}
+.blip{
+  height:95%;
+  width:10%;
+  background-color:white;
+  border-style:solid;
+  border-width:1px;
+  border-color:white;
+}
+.active {
+  background:blue;
+}

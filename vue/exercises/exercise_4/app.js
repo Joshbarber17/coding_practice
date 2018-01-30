@@ -7,8 +7,10 @@ new Vue({
     attachBlue: true,
     typeClass: '',
     size:'',
-    isWhite:false,
-    show:false //true
+    isWhite:'',
+    show:false, //true,
+    background:'',
+    progress: 0,
   },
   methods: {
     startEffect: function() {
@@ -18,10 +20,13 @@ new Vue({
       }, 3000);
     },
     trueFalse:function() {
-      console.log(this.show);
-      this.isWhite = true ? this.show = true : this.show = false;
-      this.isWhite = false ? this.show = false : this.show = true;
-      console.log(this.show);
+      this.isWhite == 'true' ? this.show = true : this.show = false;
+    },
+    startProgress: function() {
+      var timer = this;
+      var progress = setInterval(function() {
+        timer.progress < 100 ? timer.progress += 10: clearInterval(progress);
+      },1000);
     }
-  }
+  },
 });
