@@ -25,7 +25,12 @@
   (hint: use v-for and v-if to achieve this) -->
   <ul>
     <li v-for='(value, key, index) in testData'>
-      <div>{{value}}<span v-if='this.index = 2'> HELLO!</span></div>
+      <template v-if='Array.isArray(value)'>
+        <span v-for='(value, key, index) in value'>{{value}}, </span>
+      </template>
+      <template v-else>
+        <div>{{value}}</div>
+      </template>
     </li>
   </ul>
 </div>
