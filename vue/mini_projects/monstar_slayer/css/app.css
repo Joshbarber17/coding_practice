@@ -92,3 +92,11 @@ button {
 #give-up:hover {
     background-color: #c7c7c7;
 }
+.log li:nth-child(even) {
+  background: #F6B1BA;
+  color:#C92C31;
+}
+.log li:nth-child(odd) {
+  background:#E1E1FF;
+  color: #1415A2;
+}
