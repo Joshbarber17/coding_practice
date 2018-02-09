@@ -9,9 +9,13 @@ new Vue ({
     showLog: false,
     messageLog:[],
     endGame: false,
+    youWin: false,
+    monsterWin: false,
   },
   methods: {
     startNewGame: function() {
+      this.youScore = 100;
+      this.monsterScore = 100;
     },
     attack: function() {
       var myMove = Math.floor((Math.random() * 10) + 1);
@@ -47,8 +51,38 @@ new Vue ({
       this.startGame = true;
       this.showLog = false;
       this.messageLog = [];
-      this.youScore = 100;
-      this.monsterScore = 100;
+    }
+  },
+  watch: {
+    youScore: function(value){
+      if (value <= 0 ) {
+        this.youScore = 0;
+        this.monsterWin = true;
+      }
+    },
+    monsterScore: function(value) {
+      if (value <=0) {
+        this.monsterScore=0;
+        this.youWin = true;
+      }
+    },
+    monsterWin: function(value) {
+     if(value === true) {
+       alert('You Lose!');
+       this.inGame = false;
+       this.startGame = true;
+       this.messageLog = [];
+       this.showLog = false;
+     }
+   },
+   youWin: function(value) {
+    if(value === true) {
+      alert('You Win!');
+      this.inGame = false;
+      this.startGame = true;
+      this.messageLog = [];
+      this.showLog = false;
     }
   }
+ }
 });

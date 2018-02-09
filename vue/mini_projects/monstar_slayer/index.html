@@ -28,7 +28,7 @@
     </section>
     <section class="row controls" v-show='startGame'>
         <div class="small-12 columns">
-            <button @click='startGame = false, inGame = true, startNewGame' id="start-game">START NEW GAME</button>
+            <button @click='startGame = false, inGame = true, startNewGame()' id="start-game">START NEW GAME</button>
         </div>
     </section>
     <section class="row controls" v-show='inGame'>
