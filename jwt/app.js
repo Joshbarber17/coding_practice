@@ -19,7 +19,7 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api/posts', verifyToken, (req, res) => {
-  console.log(req)
+  console.log(req);
   jwt.verify(req.token, 'secretKey', (err, authData) => {
     if (err) {
       res.sendStatus(403);
@@ -39,7 +39,8 @@ app.post('/api/login', (req, res) => {
   //   username: 'johnDoe@hotmail.com',
   //   password: 'password1234'
   // }
-  jwt.sign({user: req.body}, 'secretKey', {expiresIn: '30s'}, (err, token) => {
+  //USER NOW COMING FROM JSON IN POSTMAN IN SAME FORMAT
+  jwt.sign({user: req.body}, 'secretKey', (err, token) => {
     res.json({
       token: token
     });
@@ -55,6 +56,7 @@ function verifyToken(req, res, next) {
   const bearerHeader = req.headers['authorization'];
   // check if bearer is undefinded
   if (typeof bearerHeader !== 'undefined') {
+    //bearer header will be 'Bearer ;klajsdf;lkjasdf;lkjas;dflkjas;dlfkjetc. split it at the space to just get the token'
     const bearer = bearerHeader.split(' ');
     //get token from array
     const bearerToken = bearer[1];
