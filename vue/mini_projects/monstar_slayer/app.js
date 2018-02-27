@@ -14,6 +14,8 @@ new Vue ({
   },
   methods: {
     startNewGame: function() {
+      this.startGame = false,
+      this.inGame = true,
       this.youScore = 100;
       this.monsterScore = 100;
     },
